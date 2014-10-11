@@ -60,9 +60,19 @@ def main():
                 reply = http_handle(request)
                 connection_socket.send(reply.encode('ascii'))
 
-            print("Received request:\n", request.rstrip())
-            print("Replied with:\n", reply.rstrip())
-    
+
+            print("\n\nReceived request")
+            print("======================")
+            print(request.rstrip())
+            print("======================")
+
+
+            print("\n\nReplied with")
+            print("======================")
+            print(reply.rstrip())
+            print("======================")
+
+
     return 0
 
 
