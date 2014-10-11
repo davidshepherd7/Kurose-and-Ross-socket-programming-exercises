@@ -17,6 +17,16 @@ from socket import socket as Socket
 # ...
 # probabaly loads more
 
+# Define a context manager to allow us to use with-statements with
+# socket.accept(), don't worry if you don't understand this: it simply ensures
+# that the socket is closed once we are done with it.
+import contextlib
+@contextlib.contextmanager
+def accept(server_socket):
+    connection_socket, address = server_socket.accept()
+    yield connection_socket, address
+    connection_socket.close()
+
 
 def main():
 
@@ -44,15 +54,11 @@ def main():
         print("server ready")
 
         while True:
-            connection_socket, _ = server_socket.accept()
-            try: 
+            
+            with accept(server_socket) as (connection_socket, _):
                 request = connection_socket.recv(1024).decode('ascii')
                 reply = http_handle(request)
                 connection_socket.send(reply.encode('ascii'))
-
-            # Make sure the socket gets closed no matter what
-            finally:
-                connection_socket.close()
 
             print("Received request:\n", request.rstrip())
             print("Replied with:\n", reply.rstrip())
