@@ -8,8 +8,8 @@ Hence I decided to implement the exercises myself.
 How to use
 ---------
 
-* Fork the github repository
-* Create your own solution branch based on the exercises branch with `git checkout exercises && git checkout -b ${USER}-solutions`.
+* Fork and clone the github repository
+* Create your own solution branch based on the exercises branch with `git checkout -b ${USER}-solutions exercises`.
 * Hack away
 * If you need tips look at other peoples solutions with e.g. `git show david-solutions:web-server/web-server.py`
 
