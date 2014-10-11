@@ -13,6 +13,7 @@ from socket import socket as Socket
 # Unicode files only
 # Ignores 'Connection' header
 # Ignores CRLF requirement
+# Header must be < 1024 bytes
 # ...
 # probabaly loads more
 
@@ -26,7 +27,8 @@ def main():
                         help='Port to use')
     args = parser.parse_args()
 
-    # Create the server socket (to handle tcp requests using ipv4)
+    # Create the server socket (to handle tcp requests using ipv4), make sure
+    # it is always closed by using with statement.
     with Socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
 
         # The socket stays connected even after this script ends. So in order
