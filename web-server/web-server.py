@@ -54,7 +54,7 @@ def main():
         print("server ready")
 
         while True:
-            
+
             with accept(server_socket) as (connection_socket, _):
                 request = connection_socket.recv(1024).decode('ascii')
                 reply = http_handle(request)
@@ -97,15 +97,15 @@ def http_handle(request_string):
     try:
         with open(filepath) as f:
             body = f.read()
-    
+
     except FileNotFoundError:
         status = 404
         body = 'File not found'
-        
+
     except UnicodeDecodeError:
         status = 400
         body = 'Cannot handle binary files'
-        
+
     else:
         status = 200
 
@@ -113,7 +113,7 @@ def http_handle(request_string):
                 'Status' : status,
                 'Body' : body,
                 'Content-Type': 'text/plain',
-                } 
+                }
 
     return http_response_from_dict(response)
 
@@ -130,7 +130,7 @@ def http_parse(request_string):
     except ValueError:
         header = request_string
         body = 'nothing'
-    
+
     header_lines = header.rstrip().split('\n')
 
     # Get the first line into a dict
@@ -156,7 +156,7 @@ def status_code_to_phrase(code):
                }
 
     return phrases[code]
-               
+
 
 
 def http_response_from_dict(message_dict):
@@ -213,7 +213,7 @@ def test_http_form_response():
     test_dict = {'Version' : 'HTTP/1.1',
                  'Status' : 200,
                  'Connection' : 'close',
-                 
+
                  'Body' : 'body\n',
                  }
 
