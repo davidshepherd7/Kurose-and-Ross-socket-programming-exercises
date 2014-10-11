@@ -3,7 +3,7 @@
 
 * You should test the socket code is working locally using e.g.
 
-    telnet localhost 8011
+    `telnet localhost 8011`
 
   and then inputting the request as shown in the text book.
 
