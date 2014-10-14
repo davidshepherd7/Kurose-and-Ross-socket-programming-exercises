@@ -56,7 +56,7 @@ def run_server(server_port):
         while True:
             # Receive message and send one back
             _, client_address = server_socket.recvfrom(1024)
-            server_socket.sendto("", client_address)
+            server_socket.sendto("".encode(), client_address)
 
     return 0
 
