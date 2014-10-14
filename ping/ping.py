@@ -66,7 +66,8 @@ def run_client(server_address, server_port):
     """
 
     # Fill in the client side code here.
-            
+
+    raise NotImplementedError
 
     return 0
 

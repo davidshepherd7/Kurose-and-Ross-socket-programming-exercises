@@ -78,6 +78,8 @@ def http_handle(request_string):
     # to write additional functions to parse the http request into a nicer data
     # structure (eg a dict), and to easily create http responses.
 
+    raise NotImplementedError
+
     pass
 
 
